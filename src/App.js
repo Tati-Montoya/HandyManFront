@@ -2,7 +2,7 @@ import Home from './containers/home/Home';
 
 function App() {
   return (
-   <div>
+   <div className="container">
      <Home />
    </div>
   );

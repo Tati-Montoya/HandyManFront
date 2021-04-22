@@ -7,6 +7,7 @@ export default function ConsultarHoras() {
   const [Id, setId] = useState('');
   const [semana, setSemana] = useState('');
   const [dataTable, setDataTable] = useState([]);
+  const [disabled, setDisabled] = useState(true);
 
   const handlerIdChange = (e) => {
     setId(e.target.value);
@@ -14,6 +15,14 @@ export default function ConsultarHoras() {
 
   const handlerSemanaChange = (e) => {
     setSemana(e.target.value);
+  };
+
+  const validateSubmit = (e) => {
+    if (Id !== '' && Id !== null && semana !== '' && semana !== null) {
+      setDisabled(false);
+    } else if (Id === '' || Id === null || semana === '' || semana === null) {
+      setDisabled(true);
+    }
   };
 
   const getData = () => {
@@ -29,7 +38,8 @@ export default function ConsultarHoras() {
 
   return (
     <>
-      <div className="form-group">
+      <div className="form-group" onChange={validateSubmit}>
+      <label>Calculo de horas de trabajo</label>
         <input
           type="text"
           className="form-control"
@@ -46,7 +56,12 @@ export default function ConsultarHoras() {
           onChange={handlerSemanaChange}
         />
         <br />
-        <Button onClick={getData} color="primary">
+        <Button
+          disabled={disabled}
+          name="bntSubmit"
+          onClick={getData}
+          color="primary"
+        >
           Consultar
         </Button>{' '}
       </div>

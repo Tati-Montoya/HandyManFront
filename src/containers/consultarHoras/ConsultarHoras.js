@@ -30,8 +30,10 @@ export default function ConsultarHoras() {
       idTecnico: Id,
       numSemana: semana,
     };
+    console.log(objData);
     let response = peticiones.getHorasTrabajadas(objData);
     response.then((data) => {
+      console.log(data);
       setDataTable(data);
     });
   };
@@ -39,7 +41,7 @@ export default function ConsultarHoras() {
   return (
     <>
       <div className="form-group" onChange={validateSubmit}>
-      <label>Calculo de horas de trabajo</label>
+        <label>Calculo de horas de trabajo</label>
         <input
           type="text"
           className="form-control"

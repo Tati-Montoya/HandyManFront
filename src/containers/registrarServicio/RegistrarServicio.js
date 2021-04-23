@@ -56,10 +56,10 @@ export default function RegistrarServicio() {
 
   const postData = () => {
     let objPost = {
-      fechaInicio: fechaInicio,
-      fechaFin: fechaFin,
-      idTecnico: idTecnico,
-      idServicio: idServicio,
+      id_tecnico: idTecnico,
+      id_servicio: idServicio,
+      hora_inicio: fechaFin,
+      hora_fin: fechaFin,
     };
     console.log(objPost);
     let response = peticiones.postHorasPorServicio(objPost);
@@ -80,11 +80,11 @@ export default function RegistrarServicio() {
             handlerFechaInicioChange={handlerFechaInicioChange}
           />
         </Col>
-        <br/>
+        <br />
         <Col className="mt-4">
-          <DatePicker 
-            label="Fecha hora fin" 
-            handlerFechaFinChange={handlerFechaFinChange} 
+          <DatePicker
+            label="Fecha hora fin"
+            handlerFechaFinChange={handlerFechaFinChange}
           />
         </Col>
       </Row>
@@ -105,11 +105,7 @@ export default function RegistrarServicio() {
         onChange={handlerIdServicioChange}
       />
       <br />
-      <Button
-        disabled={disabled}
-        color="primary"
-        onClick={postData}
-      >
+      <Button disabled={disabled} color="primary" onClick={postData}>
         Registrar
       </Button>
     </div>

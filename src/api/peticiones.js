@@ -15,8 +15,12 @@ export const getHorasTrabajadas = async (data) => {
 };
 
 export const postHorasPorServicio = async (data) => {
-  let dataResponse = await fetch(urlformat(`${URL}/guardar-horas`, data), {
+  let dataResponse = await fetch(`${URL}/guardar-horas`, {
     method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
   })
     .then((resp) =>
       resp.json().then((res) => {

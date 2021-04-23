@@ -16,18 +16,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DatePicker(props) {
   const classes = useStyles();
-  const { label, handlerFechaInicioChange, handlerFechaFinChange } = props;
+  const { label, handlerFechaFinChange, handlerFechaInicioChange } = props;
   return (
     <TextField
-      onChange={
-        label === 'Fecha hora inicio'
-          ? handlerFechaInicioChange
-          : handlerFechaFinChange
-      }
+      
       id="datetime-local"
       label={label}
+      onChange={
+        label == 'Fecha hora inicio'
+        ?
+        handlerFechaInicioChange
+        :
+        handlerFechaFinChange
+      }
       type="datetime-local"
-      defaultValue="2021-04-20T10:30"
+      defaultValue="2021-04-25T10:30"
       className={classes.textField}
       InputLabelProps={{
         shrink: true,

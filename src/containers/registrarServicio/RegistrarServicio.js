@@ -58,7 +58,7 @@ export default function RegistrarServicio() {
     let objPost = {
       id_tecnico: idTecnico,
       id_servicio: idServicio,
-      hora_inicio: fechaFin,
+      hora_inicio: fechaInicio,
       hora_fin: fechaFin,
     };
     console.log(objPost);
@@ -68,6 +68,8 @@ export default function RegistrarServicio() {
       setResponsePost(obj);
       console.log(obj);
     });
+    setIdTecnico('');
+    setIdServicio('');
   };
 
   return (
@@ -76,13 +78,15 @@ export default function RegistrarServicio() {
       <Row>
         <Col className="mt-4">
           <DatePicker
-            label="Fecha hora inicio"
+            key="inicio"
             handlerFechaInicioChange={handlerFechaInicioChange}
+            label="Fecha hora inicio"
           />
         </Col>
         <br />
         <Col className="mt-4">
           <DatePicker
+            key="fin"
             label="Fecha hora fin"
             handlerFechaFinChange={handlerFechaFinChange}
           />
@@ -94,6 +98,7 @@ export default function RegistrarServicio() {
         className="form-control"
         placeholder="Id Tecnico"
         autoComplete="off"
+        value={idTecnico}
         onChange={handlerIdTecnicoChange}
       />
       <br />
@@ -102,6 +107,7 @@ export default function RegistrarServicio() {
         className="form-control"
         placeholder="Id servicio"
         autoComplete="off"
+        value={idServicio}
         onChange={handlerIdServicioChange}
       />
       <br />
